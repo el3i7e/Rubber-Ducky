@@ -4,7 +4,8 @@ setlocal enabledelayedexpansion
 
 set file_extensions=.txt .docx .pdf .png .jpg .mp3 .mp4
 set file_list=
-set zip_file=D:\compiled_files.zip
+set script_path=%~dp0
+set zip_file=%script_path%compiled_files.zip
 
 for /r %%F in (%file_extensions%) do (
     if exist "%%F" (
