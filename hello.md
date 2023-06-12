@@ -1,1 +1,5 @@
-https://cdn.discordapp.com/attachments/995320575822147634/1115977139678871622/hi.exe
+$sourceFolder = "C:\Users"
+$destinationFolder = "D:\"
+$monthAgo = (Get-Date).AddMonths(-1)
+
+Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $monthAgo } | Copy-Item -Destination $destinationFolder -Container -Force
