@@ -1,5 +1,6 @@
 $sourceFolder = "C:\Users"
 $destinationFolder = "D:\"
-$monthAgo = (Get-Date).AddMonths(-1)
+$startDate = (Get-Date).AddMonths(-1)
+$endDate = Get-Date
 
-Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $monthAgo } | Copy-Item -Destination $destinationFolder -Container -Force
+Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $startDate -and $_.LastWriteTime -le $endDate } | Copy-Item -Destination $destinationFolder -Container -Force
